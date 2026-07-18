@@ -1,0 +1,117 @@
+/* ==========================================================
+   Design tokens — "โรงคั่ว" (Rong Khua) Coffee
+   Roast-house palette: deep espresso, parchment, roasted gold,
+   coffee-leaf green, cherry red. Two brew modes: Day / Night.
+   ========================================================== */
+
+:root {
+  /* -- Day mode (default) -- */
+  --espresso: #2B1B12;
+  --espresso-soft: #4A3222;
+  --cream: #F3EAD8;
+  --cardboard: #E7D8BC;
+  --cardboard-line: #D3BE97;
+  --gold: #B9852B;
+  --gold-deep: #8F6317;
+  --forest: #3F5C48;
+  --forest-soft: #EAF0E9;
+  --cherry: #7A3B34;
+
+  --bg: var(--cream);
+  --bg-elevated: var(--cardboard);
+  --line: var(--cardboard-line);
+  --text: var(--espresso);
+  --text-soft: var(--espresso-soft);
+  --accent: var(--gold);
+  --accent-deep: var(--gold-deep);
+  --accent-2: var(--forest);
+  --accent-2-bg: var(--forest-soft);
+  --danger: var(--cherry);
+  --paper: #FBF6EC;
+  --shadow: 0 10px 30px -12px rgba(43, 27, 18, 0.35);
+
+  --font-display: "Fraunces", serif;
+  --font-body: "Work Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+[data-theme="night"] {
+  --bg: #1C130D;
+  --bg-elevated: #2A1D14;
+  --line: #4A3627;
+  --text: #F3EAD8;
+  --text-soft: #D8C6AC;
+  --accent: #D9A94A;
+  --accent-deep: #F0C471;
+  --accent-2: #7FA085;
+  --accent-2-bg: #26332A;
+  --danger: #C97066;
+  --paper: #241811;
+  --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  transition: background 0.35s ease, color 0.35s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(43,27,18,0.06) 1px, transparent 1px);
+  background-size: 18px 18px;
+  opacity: 0.5;
+}
+
+[data-theme="night"] body::before {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  color: var(--text);
+}
+
+a { color: inherit; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
